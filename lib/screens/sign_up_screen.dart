@@ -48,6 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontSize: 40,
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
+                        height: 1.2,
                       ),
                     ),
                     IconTile(

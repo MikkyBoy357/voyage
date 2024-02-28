@@ -40,8 +40,9 @@ class SignInScreen extends StatelessWidget {
                     const Text(
                       'Se\nconnecter',
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 40,
                         fontWeight: FontWeight.w900,
+                        height: 1.2,
                         color: Colors.white,
                       ),
                     ),
