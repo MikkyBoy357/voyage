@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:voyage/constants/icon_tile.dart';
+import 'package:voyage/constants/images.dart';
 import 'package:voyage/screens/details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,17 +13,16 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.location_on,
-                color: Color(0xFFF29D38),
-              ),
+            IconTile(path: locationIcon),
+            const SizedBox(
+              width: 9,
             ),
-            Text("Bénin"),
+            const Text("Bénin"),
             IconButton(
               onPressed: () {},
               icon: const Icon(
@@ -33,17 +34,17 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
               width: size.width,
               height: 50,
               padding: const EdgeInsets.symmetric(horizontal: 5),
               decoration: BoxDecoration(
-                color: Color(0xFFD9D9D9),
+                color: const Color(0xFFD9D9D9),
                 borderRadius: BorderRadius.circular(30.0),
               ),
               child: Row(
@@ -55,13 +56,13 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  Text("Search"),
+                  const Text("Search"),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             RichText(
-              text: TextSpan(
+              text: const TextSpan(
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 24,
@@ -76,13 +77,13 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ListView.separated(
               itemCount: 5,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               separatorBuilder: (context, index) {
-                return SizedBox(height: 20);
+                return const SizedBox(height: 20);
               },
               itemBuilder: (context, index) {
                 return InkWell(
@@ -91,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return DetailsScreen();
+                          return const DetailsScreen();
                         },
                       ),
                     );
@@ -110,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                         Expanded(
                           flex: 3,
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.blue,
                               image: DecorationImage(
                                 image: NetworkImage(
@@ -130,7 +131,7 @@ class HomeScreen extends StatelessWidget {
                             width: size.width,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 10),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(30),
                                 bottomRight: Radius.circular(30),
@@ -140,7 +141,7 @@ class HomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   "Les Chutes de Tanougou",
                                   maxLines: 1,
                                   style: TextStyle(
@@ -150,11 +151,8 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    Icon(
-                                      Icons.location_on,
-                                      color: Color(0xFFF29D38),
-                                    ),
-                                    Text(
+                                    IconTile(path: locationIcon),
+                                    const Text(
                                       "Tanougou",
                                       maxLines: 1,
                                       style: TextStyle(
@@ -174,7 +172,7 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),

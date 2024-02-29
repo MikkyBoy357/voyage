@@ -23,20 +23,20 @@ class AgentDetailScreen extends StatelessWidget {
                   AppBar(
                     backgroundColor: Colors.transparent,
                     centerTitle: true,
-                    title: Icon(
+                    title: const Icon(
                       CupertinoIcons.profile_circled,
                       size: 35,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "Agency name:",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Row(
+                  const SizedBox(height: 10),
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.star_border, color: Colors.yellow),
@@ -49,20 +49,20 @@ class AgentDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w300,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Center(
                     child: InkWell(
                       onTap: () {
@@ -70,19 +70,19 @@ class AgentDetailScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return ChatScreen();
+                              return const ChatScreen();
                             },
                           ),
                         );
                       },
                       child: Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
                         decoration: BoxDecoration(
-                          color: Color(0xFFF29D38),
+                          color: const Color(0xFFF29D38),
                           borderRadius: BorderRadius.circular(5),
                         ),
-                        child: Text(
+                        child: const Text(
                           "Contact",
                           style: TextStyle(
                             fontSize: 18,
@@ -92,8 +92,8 @@ class AgentDetailScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     "Feedbacks",
                     style: TextStyle(
                       fontSize: 24,
@@ -105,20 +105,20 @@ class AgentDetailScreen extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (context, index) {
-                      return SizedBox(height: 15);
+                      return const SizedBox(height: 15);
                     },
                     itemBuilder: (context, index) {
                       return Row(
                         children: [
                           Container(
                             width: size.width / 1.3,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 8),
                             decoration: BoxDecoration(
                               color: Colors.deepPurple[300],
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Column(
+                            child: const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
@@ -156,7 +156,7 @@ class AgentDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
           ],
         ),
       ),
@@ -168,20 +168,20 @@ class AgentDetailScreen extends StatelessWidget {
             CircleAvatar(
               child: IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.message),
+                icon: const Icon(Icons.message),
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Expanded(
               child: Container(
                 // width: size.width / 1.5,
                 height: 50,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  color: Color(0xFFD9D9D9),
+                  color: const Color(0xFFD9D9D9),
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                child: Row(
+                child: const Row(
                   children: [
                     Expanded(
                       child: Text(

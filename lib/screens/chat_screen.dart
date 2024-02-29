@@ -10,7 +10,7 @@ class ChatScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           children: [
             Icon(
               CupertinoIcons.profile_circled,
@@ -22,7 +22,7 @@ class ChatScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
             ListView.separated(
@@ -30,10 +30,10 @@ class ChatScreen extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               separatorBuilder: (context, index) {
-                return SizedBox(height: 15);
+                return const SizedBox(height: 15);
               },
               itemBuilder: (context, index) {
-                return SenderBubble();
+                return const SenderBubble();
               },
             ),
           ],
@@ -55,19 +55,19 @@ class SenderBubble extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
+        const Icon(
           CupertinoIcons.profile_circled,
           size: 35,
         ),
-        SizedBox(width: 15),
+        const SizedBox(width: 15),
         Container(
           width: size.width / 1.5,
-          padding: EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),
           decoration: BoxDecoration(
             color: Colors.grey[400],
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Text(
+          child: const Text(
             "when an unknown printer took a galley of type and scrambled it to make a type specimen book",
             maxLines: 6,
           ),
