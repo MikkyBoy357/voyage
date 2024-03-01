@@ -9,85 +9,96 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        toolbarHeight: 60,
-        automaticallyImplyLeading: false,
-        // leading: IconButton(
-        //   onPressed: () {
-        //     Navigator.pop(context);
-        //   },
-        //   icon: IconTile(
-        //     path: backIcon,
-        //     height: 30,
-        //     width: 30,
-        //   ),
-        // ),
-        title: const Text(
-          'Modifiez votre  profile',
-          style: TextStyle(
-            fontSize: 19,
-            color: Colors.black,
-          ),
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.5), BlendMode.saturation),
+          image: AssetImage(profileBg),
+          fit: BoxFit.cover,
         ),
-        centerTitle: true,
-        backgroundColor: const Color(0xFFF29D38),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 26.0),
-        child: Column(
-          children: [
-            // Container(),
-            const SizedBox(
-              height: 29,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          toolbarHeight: 60,
+          automaticallyImplyLeading: false,
+          // leading: IconButton(
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          //   icon: IconTile(
+          //     path: backIcon,
+          //     height: 30,
+          //     width: 30,
+          //   ),
+          // ),
+          title: const Text(
+            'Modifiez votre  profile',
+            style: TextStyle(
+              color: Colors.black,
             ),
-            textField(
-                hintText: 'Entrez le Nom de votre Agence', isVisible: false),
-            const SizedBox(
-              height: 31,
-            ),
-            textField(
-                hintText: 'Decrivez votre agence en 500 mots maximum',
-                maxLine: 9,
-                isVisible: false),
-            const SizedBox(
-              height: 28,
-            ),
-            textField(hintText: 'Televerser votre Logo', isVisible: true),
-            const SizedBox(
-              height: 28,
-            ),
-            textField(
-              hintText: 'Televerser votre photo de couverture',
-              maxLine: 2,
-              hintTextHeight: 1.2,
-              isVisible: true,
-            ),
-            const SizedBox(
-              height: 28,
-            ),
-            textField(
-              hintText: 'Televerser une video de presentation',
-              maxLine: 2,
-              hintTextHeight: 1.2,
-              isVisible: true,
-            ),
-            const SizedBox(
-              height: 28,
-            ),
-            ButtonTile(
-              text: 'Enregistrez',
-              height: 33,
-              width: 146,
-              radius: 10,
-              fontSize: 20,
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-          ],
+          ),
+          centerTitle: true,
+          backgroundColor: const Color(0xFFF29D38),
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 26.0),
+          child: Column(
+            children: [
+              // Container(),
+              const SizedBox(
+                height: 29,
+              ),
+              textField(
+                  hintText: 'Entrez le Nom de votre Agence', isVisible: false),
+              const SizedBox(
+                height: 31,
+              ),
+              textField(
+                  hintText: 'Decrivez votre agence en 500 mots maximum',
+                  maxLine: 9,
+                  isVisible: false),
+              const SizedBox(
+                height: 28,
+              ),
+              textField(hintText: 'Televerser votre Logo', isVisible: true),
+              const SizedBox(
+                height: 28,
+              ),
+              textField(
+                hintText: 'Televerser votre photo de couverture',
+                maxLine: 2,
+                hintTextHeight: 1.2,
+                isVisible: true,
+              ),
+              const SizedBox(
+                height: 28,
+              ),
+              textField(
+                hintText: 'Televerser une video de presentation',
+                maxLine: 2,
+                hintTextHeight: 1.2,
+                isVisible: true,
+              ),
+              const SizedBox(
+                height: 28,
+              ),
+              ButtonTile(
+                text: 'Enregistrez',
+                height: 33,
+                width: 146,
+                radius: 10,
+                fontSize: 20,
+                onTap: () {},
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
         ),
       ),
     );
