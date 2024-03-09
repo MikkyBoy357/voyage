@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'agent_detail_screen.dart';
+import 'package:voyage/screens/agent_detail_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});

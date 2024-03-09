@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:voyage/screens/agent_contact_screen.dart';
 
 import 'chat_screen.dart';
 
@@ -70,7 +71,7 @@ class AgentDetailScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return const ChatScreen();
+                              return const AgentContactScreen();
                             },
                           ),
                         );
