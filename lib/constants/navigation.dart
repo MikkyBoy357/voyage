@@ -6,7 +6,8 @@ import 'package:voyage/screens/home_screen.dart';
 import '../screens/profile_screen.dart';
 
 class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+  final String token;
+  const NavBar({super.key, required this.token});
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -14,17 +15,38 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   int _currentIndex = 0;
+  late List<Widget> screens;
 
-  final List<Widget> screens = [
-    const HomeScreen(),
-    const Center(
-      child: Text(
-        'Not yet implemented',
-        style: TextStyle(color: Colors.red),
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    screens = [
+      HomeScreen(token: widget.token),
+      const Center(
+        child: Text(
+          'Not yet implemented',
+          style: TextStyle(color: Colors.red),
+        ),
       ),
-    ),
-    const ProfileScreen(),
-  ];
+      const ProfileScreen(),
+    ];
+
+    print('Token ====> ${widget.token}');
+  }
+
+  // final List<Widget> screens = [
+  //   HomeScreen(
+  //     token: widget.token,
+  //   ),
+  //   const Center(
+  //     child: Text(
+  //       'Not yet implemented',
+  //       style: TextStyle(color: Colors.red),
+  //     ),
+  //   ),
+  //   const ProfileScreen(),
+  // ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

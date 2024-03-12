@@ -26,7 +26,7 @@ class SelectAccountScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.network(
-              'https://s3-alpha-sig.figma.com/img/2734/fe07/eb55c3f93c73deb24294707e9208a699?Expires=1710115200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iLvhyToA99qOgOE-3wxbwvG-qsFRVg3ReV4ZU~yEndlmZ35j1-hJmEHupULITc7e8MmoYuCD77nMOTgQfilCmGZbGGzFGWbOcqlMuVfGQlQedS-AyeWbF8U8XIBatdPGhooR0jYLXV3MDANpOh6qza1LwFiFXS-FNDpmSfoRpz5Qss7mdIA4gG8nB6kH~kZgbzIbb52m~7W7WaTBYTBa3qyFnYaQQflmEt--K-eMb~-tgE1hecfSl0Sh2-nXVafu1GNYughbHAstdq5StSg60JGILkmyWNJyPAssQFqJD~oYV4uBbS2Q5giKVWHHNJ6i9BP-zljPj9T0dmoOCxaqVA__',
+              'https://s3-alpha-sig.figma.com/img/2734/fe07/eb55c3f93c73deb24294707e9208a699?Expires=1711324800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Ut2pLioebNm3jatgKz6~pClE-c~LIgbmgZTptvjNZgrtCXMdwxgm1ADHSPWG9aP9z-ljSfpozsEAPx3oMcxWFo6j8mwvmcktoABCV9juv4GIZ1qc95uT0cTcOyxG71SjRP3XrMqcPJ78jxgxGt2-IiEc7OAxhbxnohmUvn1-srmweLyXGzsD6~p119o4ua16v-b0-IDXoP90bTd1AjE6-mCYGc-9TaA3DNK4aXvjPpPA5FALq-83wUm52fK2Z94Vi~XMPPa8p2R-A3Gef2lBImeIZEan3~mDJlLnXHNIIut5usDO1-Geu31eWx7NN3zRF4rkOXGV4b9VazU0lBz9HA__',
               height: 44,
               width: 122,
               fit: BoxFit.contain,

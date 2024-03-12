@@ -2,8 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:voyage/screens/agent_detail_screen.dart';
 
+import '../constants/icon_tile.dart';
+import '../constants/images.dart';
+import '../models/destination_model.dart';
+
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
+  final String title;
+  final String description;
+  final List<DestinationAgencyModel> destination;
+
+  const DetailsScreen(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.destination});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +36,7 @@ class DetailsScreen extends StatelessWidget {
                     color: Colors.blue,
                     image: DecorationImage(
                       image: NetworkImage(
-                          "https://s3-alpha-sig.figma.com/img/f497/3dc1/6588a82aebd25636266225e437d08c38?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=nd9yzOMYGiF-MVbyvn~lxvEVikltyQtAbbo~W8EIcF6eHh0x4RqgDzKLN3mawaay24Tqsqe-UAaBlMFnY4MpU41jDVAl4FEC-7YG-Aergb~eYgbPDSzUn~BMikMKiv~RO6AZnurXsMo7wHo93Qj1kb6voBT9J8ZaMXlwV80EYmGYJJaNUlT~qXjvJX6nx55Oh8Z7rFBjHEXNOnwpzkFc~to1mPAoGxLKoBwAZod-GMkDKZz94j20vdfcjLvPMd0pPtQKUMvcvnvPXuyZI6tifNbTYc49Qq0Zg7XOi-6ENQPrjyhijoFH0I1Fud7ZCDoTHgAMn6N57nHovxuR1A2rdA__"),
+                          "https://s3-alpha-sig.figma.com/img/f497/3dc1/6588a82aebd25636266225e437d08c38?Expires=1711324800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=XoVlvz6EKQbVZUWU8VODjgPqEg7nV~ppwyNjj1ZUZOsC6nR85N-LwbWqnHEgKQGmrRu~j0v7fd1TgW2IDB-4sBU53LOFqC~oVQbML5MYx~qalnbOqWrTGYlBlY9NpOdnoccykE4QDOUF2019U-CHrN2EYpLcMZ3~NEpiVndUdT2oVZkuiHjbD0U7G4a6L9oZ0S95qzYxUAXMHKUVkNAvdfnhcHsyTY9UNJWOubCT8EagLXLK6SePiS1p9dHYAiE2eBQJ-dZ2LlaGSZf3vBo3o-vSO-qi9JoYqP1PmH~fT7a~auIicxeOpJIntuaslHLhwxSoXGwl6x3aPRjmrYTPuA__"),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -49,19 +61,37 @@ class DetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Title",
-                    style: TextStyle(
+                  Text(
+                    title,
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-                    style: TextStyle(
+                  Text(
+                    description,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w300,
                     ),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconTile(path: locationIcon),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      const Text(
+                        "Tanougou",
+                        maxLines: 1,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20),
                   const Text(
@@ -72,20 +102,24 @@ class DetailsScreen extends StatelessWidget {
                     ),
                   ),
                   ListView.separated(
-                    itemCount: 5,
+                    itemCount: destination.length,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (context, index) {
                       return const SizedBox(height: 5);
                     },
                     itemBuilder: (context, index) {
+                      final data = destination[index];
                       return ListTile(
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return const AgentDetailScreen();
+                                return AgentDetailScreen(
+                                  aName: data.name,
+                                  aDescription: data.description,
+                                );
                               },
                             ),
                           );
@@ -94,9 +128,9 @@ class DetailsScreen extends StatelessWidget {
                           CupertinoIcons.profile_circled,
                           size: 30,
                         ),
-                        title: const Text(
-                          "Agencies name",
-                          style: TextStyle(
+                        title: Text(
+                          data.name,
+                          style: const TextStyle(
                             fontSize: 20,
                           ),
                         ),

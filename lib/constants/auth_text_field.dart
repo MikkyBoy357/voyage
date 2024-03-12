@@ -15,21 +15,26 @@ class AuthTextField extends StatelessWidget {
   final double? size;
   final FontWeight? fontWeight;
   final double? borderWidth;
-  const AuthTextField(
-      {super.key,
-      required this.icon,
-      required this.hintText,
-      this.width,
-      this.color,
-      this.radius,
-      this.hintTextColor,
-      this.padding,
-      this.size,
-      this.height,
-      this.textColor,
-      this.borderColor,
-      this.fontWeight,
-      this.borderWidth});
+  final TextInputType? textInputType;
+  final Function(String)? onchange;
+  const AuthTextField({
+    super.key,
+    required this.icon,
+    required this.hintText,
+    this.width,
+    this.color,
+    this.radius,
+    this.hintTextColor,
+    this.padding,
+    this.size,
+    this.height,
+    this.textColor,
+    this.borderColor,
+    this.fontWeight,
+    this.borderWidth,
+    this.onchange,
+    this.textInputType,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +42,13 @@ class AuthTextField extends StatelessWidget {
       height: 54,
       width: width ?? double.infinity,
       child: TextField(
+        keyboardType: textInputType,
         style: TextStyle(
           color: textColor ?? Colors.white,
         ),
         decoration: InputDecoration(
           prefixIcon: icon,
+
           // prefixIconConstraints: BoxConstraints(maxWidth: constraint ?? 60),
           hintText: hintText,
           hintStyle: GoogleFonts.roboto(
@@ -67,6 +74,7 @@ class AuthTextField extends StatelessWidget {
           fillColor: color ?? const Color(0xFF383636),
           contentPadding: padding ?? const EdgeInsets.all(0),
         ),
+        onChanged: onchange,
       ),
     );
   }

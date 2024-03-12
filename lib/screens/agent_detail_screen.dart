@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:voyage/screens/agent_contact_screen.dart';
 
-import 'chat_screen.dart';
-
 class AgentDetailScreen extends StatelessWidget {
-  const AgentDetailScreen({super.key});
+  final String aName;
+  final String aDescription;
+  const AgentDetailScreen({super.key, required this.aName, required this.aDescription});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,8 @@ class AgentDetailScreen extends StatelessWidget {
                       size: 35,
                     ),
                   ),
-                  const Text(
-                    "Agency name:",
+                   Text(
+                   aName,
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
@@ -56,8 +56,8 @@ class AgentDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                   Text(
+                    aDescription,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w300,

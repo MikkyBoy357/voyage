@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:voyage/constants/button_tile.dart';
 import 'package:voyage/constants/icon_tile.dart';
 import 'package:voyage/constants/images.dart';
 import 'package:voyage/screens/sign_in_screen.dart';
+import 'package:voyage/view-model/providers/auth_provider.dart';
 
 import '../constants/auth_text_field.dart';
 
@@ -16,6 +18,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthViewModel>(context);
     return Container(
       height: double.infinity,
       width: double.infinity,
@@ -32,118 +35,186 @@ class _SignUpScreenState extends State<SignUpScreen> {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 39.0),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 90,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: [
-                    const Text(
-                      'Crée\nun compte',
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.white,
-                        height: 1.2,
-                      ),
-                    ),
-                    IconTile(
-                      path: locationIcon,
-                      height: 50,
-                      width: 50,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                const AuthTextField(
-                  hintText: 'Enter email address',
-                  icon: Icon(
-                    Icons.person,
-                    size: 35,
-                    color: Colors.white,
+            child: Form(
+              key: authProvider.signupKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 90,
                   ),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                AuthTextField(
-                  hintText: 'Enter password',
-                  icon: IconTile(path: passwordIcon),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                AuthTextField(
-                  hintText: 'Confirm password',
-                  icon: IconTile(path: passwordIcon),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                infoText(),
-                const SizedBox(
-                  height: 28,
-                ),
-                Center(
-                  child: ButtonTile(
-                    text: 'Register',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const SignInScreen(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      const Text(
+                        'Crée\nun compte',
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          height: 1.2,
                         ),
-                      );
+                      ),
+                      IconTile(
+                        path: locationIcon,
+                        height: 50,
+                        width: 50,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  AuthTextField(
+                    hintText: 'Enter firstName',
+                    icon: Icon(
+                      Icons.person,
+                      size: 35,
+                      color: Colors.white,
+                    ),
+                    onchange: (value) {
+                      authProvider.setFirstName(value);
+                      print('EMail ======> $value');
                     },
                   ),
-                ),
-                const SizedBox(
-                  height: 27,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'i already have an',
-                      style: TextStyle(
-                        color: Color(0xFFE4DDDD),
-                        fontSize: 15,
-                      ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  AuthTextField(
+                    hintText: 'Enter lastName',
+                    icon: Icon(
+                      Icons.person,
+                      size: 35,
+                      color: Colors.white,
                     ),
-                    GestureDetector(
+                    onchange: (value) {
+                      authProvider.setLastName(value);
+                      print('EMail ======> $value');
+                    },
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  AuthTextField(
+                    hintText: 'Enter address',
+                    icon: Icon(
+                      Icons.person,
+                      size: 35,
+                      color: Colors.white,
+                    ),
+                    onchange: (value) {
+                      authProvider.setAddress(value);
+                      print('EMail ======> $value');
+                    },
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  AuthTextField(
+                    hintText: 'Enter email',
+                    icon: Icon(
+                      Icons.email,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    onchange: (value) {
+                      authProvider.setEmailAddress(value);
+                      print('EMail ======> $value');
+                    },
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  AuthTextField(
+                    hintText: 'Enter phone',
+                    textInputType: TextInputType.number,
+                    icon: Icon(
+                      Icons.call,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    onchange: (value) {
+                      authProvider.setPhoneNumber(value);
+                      print('EMail ======> $value');
+                    },
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  AuthTextField(
+                    hintText: 'Enter password',
+                    icon: IconTile(path: passwordIcon),
+                    onchange: (value) {
+                      authProvider.setPassword(value);
+                      print('Password ======> $value');
+                    },
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  infoText(),
+                  const SizedBox(
+                    height: 28,
+                  ),
+                  Center(
+                    child: ButtonTile(
+                      text: 'Register',
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const SignInScreen(),
-                          ),
-                        );
+                        authProvider.signUp(context, 'tourists');
+
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (_) => const SignInScreen(),
+                        //   ),
+                        // );
                       },
-                      child: const Text(
-                        ' account!',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 27,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'i already have an',
                         style: TextStyle(
-                          color: Colors.indigo,
+                          color: Color(0xFFE4DDDD),
                           fontSize: 15,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 31,
-                ),
-                IconTile(
-                  path: googleIcon,
-                  height: 50,
-                  width: 50,
-                ),
-              ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const SignInScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          ' account!',
+                          style: TextStyle(
+                            color: Colors.indigo,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 31,
+                  ),
+                  IconTile(
+                    path: googleIcon,
+                    height: 50,
+                    width: 50,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
