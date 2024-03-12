@@ -11,7 +11,7 @@ import '../../constants/navigation.dart';
 import '../../models/user_model.dart';
 
 class AuthViewModel extends ChangeNotifier {
-  UserModel? userModel;
+  UserModel? currentUser;
   GlobalKey<FormState> signupKey = GlobalKey<FormState>();
   GlobalKey<FormState> loginKey = GlobalKey<FormState>();
 
@@ -109,15 +109,17 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   Future<void> logIn(BuildContext context) async {
-    if ((loginKey.currentState?.validate() ?? false) == false) {
-      log("Wrong Data");
-      return infoSnackBar(context, 'Invalid Data');
+    if (!loginKey.currentState!.validate()) {
+      infoSnackBar(context, 'Invalid Data');
+      return;
     }
+
     try {
       final Map<String, dynamic> loginData = {
         'email': loginEmail,
         'password': loginPassword,
       };
+
       final response = await http.post(
         Uri.parse('$authUrl/login'),
         headers: <String, String>{
@@ -125,30 +127,28 @@ class AuthViewModel extends ChangeNotifier {
         },
         body: jsonEncode(loginData),
       );
+
       if (response.statusCode == 200) {
-        // Parse the response body
+        // Login successful
         final responseBody = jsonDecode(response.body);
         final token = responseBody['token'];
-        final userId = responseBody['userId'];
         final user = responseBody['user'];
 
         await TokenManager.setToken('auth_token', token);
+        print('=====>Login Token $token');
+        print('====> user $user');
 
-        final userModel = UserModel.fromJson(user);
-
-        log('Response === > ${jsonDecode(response.body)}');
-        infoSnackBar(context, 'Login Successful', Colors.green);
+        final UserModel userModel = UserModel.fromJson(user);
+        currentUser = userModel;
+        print('userModel : $userModel');
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (_) => NavBar(
-              token: token,
-            ),
+            builder: (_) => NavBar(token: token),
           ),
         );
-        return responseBody;
+        infoSnackBar(context, 'Login Successful', Colors.green);
       } else {
-        // Handle other status codes
         log('Failed to Login: ${response.body}');
         infoSnackBar(context, 'Failed to Login');
       }

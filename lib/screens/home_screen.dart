@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:voyage/constants/icon_tile.dart';
 import 'package:voyage/constants/images.dart';
 import 'package:voyage/screens/details_screen.dart';
+import 'package:voyage/view-model/providers/auth_provider.dart';
 import 'package:voyage/view-model/providers/destination_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,8 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     Map<String, dynamic> decodeJwtToken = JwtDecoder.decode(widget.token);
 
-    firstName = decodeJwtToken['firstName'];
-    print('First Name ==> $firstName');
+    firstName = decodeJwtToken['email'];
 
     email = decodeJwtToken['email'];
     name = email.split('@')[0];
@@ -64,8 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
-        child: Consumer<DestinationProvider>(
-            builder: (context, destinationProvider, _) {
+        child: Consumer2<DestinationProvider, AuthViewModel>(
+            builder: (context, destinationProvider, auth, _) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <TextSpan>[
                     const TextSpan(text: 'Bonjour '),
                     TextSpan(
-                      text: '$firstName',
+                      text: auth.currentUser!.firstName,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const TextSpan(text: ' , Explore le Bénin'),
